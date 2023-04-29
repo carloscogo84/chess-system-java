@@ -26,4 +26,18 @@ public class Board {
     public void setColumns(int columns) {
         this.columns = columns;
     }
+
+
+    /* public retornando um objeto do tipo piece e o nome do meto é piece. Recebendo um int linha e coluna.
+    Esse metodo retorna a matriz pieces, linha e coluna
+     */
+    public Piece piece(int rows, int columns){
+        return pieces[rows][columns];
+    }
+    // Sobrecarga do metodo retornando a peça pela posicao
+    public Piece piece(Position position){
+        return pieces[position.getRow()][position.getColumn()];
+    }
+
+
 }
