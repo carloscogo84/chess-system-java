@@ -1,12 +1,16 @@
 package chess;
 
 import bordgame.Board;
+import bordgame.Position;
+import chess.pieces.King;
+import chess.pieces.Rook;
 
 public class ChessMacth {
     private Board board;
 
     public ChessMacth(){
         board = new Board(8, 8);
+        initialSetup();
     }
 
     public ChessPiece[][] getPices(){
@@ -17,5 +21,10 @@ public class ChessMacth {
             }
         }
         return mat;
+    }
+    private void initialSetup(){
+        board.placePieces(new Rook(board, Color.WHITE), new Position(2,1));
+        board.placePieces(new King(board, Color.BLACK), new Position(0,4));
+        board.placePieces(new King(board, Color.WHITE), new Position(7,4));
     }
 }
