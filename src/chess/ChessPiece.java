@@ -3,7 +3,7 @@ package chess;
 import bordgame.Board;
 import bordgame.Piece;
 
-public class ChessPiece extends Piece { // Sub classe de Piece, necessita do construtor
+public abstract class ChessPiece extends Piece { // Sub classe de Piece, necessita do construtor
     private Color color;
 
     public ChessPiece(Board board, Color color) {
