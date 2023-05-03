@@ -4,7 +4,7 @@ import bordgame.Board;
 import bordgame.Piece;
 import bordgame.Position;
 
-public abstract class ChessPiece extends Piece { // Sub classe de Piece, necessita do construtor
+public abstract class ChessPiece extends Piece {
     private Color color;
 
     public ChessPiece(Board board, Color color) {

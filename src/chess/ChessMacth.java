@@ -7,10 +7,16 @@ import bordgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChessMacth {
     private int turn;
     private Color currentPlayer;
     private Board board;
+
+    private List<Piece> piecesOnTheBoard = new ArrayList<>();
+    private List<Piece> capturedPieces = new ArrayList<>();
 
     public ChessMacth(){
         board = new Board(8, 8);
@@ -31,7 +37,7 @@ public class ChessMacth {
         ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
         for (int i=0; i< board.getRows(); i++){
             for(int j=0; j< board.getColumns(); j++){
-                mat[i][j] = (ChessPiece) board.piece(i, j); // Downcasting para interpretar como uma peça de xadrez
+                mat[i][j] = (ChessPiece) board.piece(i, j);
             }
         }
         return mat;
@@ -57,6 +63,12 @@ public class ChessMacth {
         Piece p = board.removePiece(source);
         Piece capturedPiece = board.removePiece(target);
         board.placePieces(p, target);
+
+        if(capturedPiece != null){
+            piecesOnTheBoard.remove(capturedPiece);
+            capturedPieces.add(capturedPiece);
+
+        }
         return capturedPiece;
     }
 
@@ -83,6 +95,7 @@ public class ChessMacth {
 
     private void placeNewPiece(char column, int row, ChessPiece piece){
         board.placePieces(piece, new ChessPosition(column,row).toPosition());
+        piecesOnTheBoard.add(piece);
     }
     private void initialSetup(){
         placeNewPiece('c', 1, new Rook(board, Color.WHITE));

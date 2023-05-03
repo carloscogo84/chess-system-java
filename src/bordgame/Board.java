@@ -22,16 +22,12 @@ public class Board {
         return columns;
     }
 
-    /* public retornando um objeto do tipo piece e o nome do meto é piece. Recebendo um int linha e coluna.
-    Esse metodo retorna a matriz pieces, linha e coluna
-     */
     public Piece piece(int row, int column){
         if(!positionExists(row, column)){
             throw new BoardException("Position not on the board");
         }
         return pieces[row][column];
     }
-    // Sobrecarga do metodo retornando a peça pela posicao
     public Piece piece(Position position){
         if(!positionExists(position)){
             throw new BoardException("Position not on the board");
@@ -59,7 +55,6 @@ public class Board {
         return aux;
     }
 
-    //Testando se uma posiçāo existe
     private boolean positionExists(int row, int column){
         return row >= 0 && row < rows && column >= 0 && column < columns;
     }
